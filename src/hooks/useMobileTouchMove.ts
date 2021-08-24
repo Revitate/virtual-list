@@ -67,12 +67,13 @@ export default function useMobileTouchMove(
   };
 
   React.useLayoutEffect(() => {
+    let list = listRef.current
     if (inVirtual) {
-      listRef.current.addEventListener('touchstart', onTouchStart);
+      list.addEventListener('touchstart', onTouchStart);
     }
 
     return () => {
-      listRef.current.removeEventListener('touchstart', onTouchStart);
+      list.removeEventListener('touchstart', onTouchStart);
       cleanUpEvents();
       clearInterval(intervalRef.current);
     };
